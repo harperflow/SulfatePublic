@@ -1,3 +1,4 @@
+-- I DID NOT MAKE THIS!!! CREDITS TO THE ORIGINAL DEVELOPER!!!!!! (IDK WHO THOUGH)
 
 -- Variables
 local uis = game:GetService("UserInputService")
@@ -100,9 +101,9 @@ local themes = {
 			["ScrollBarImageColor3"] = {},
 		},
 		-- UNCOMMENT THIS TO ADD GLOW TO YOUR UI (modify it yourself.)
-		["glow"] = {
-		    ["ImageColor3"] = {},
-		},
+		-- ["glow"] = {
+		--     ["ImageColor3"] = {},
+		-- },
 	},
 }
 
@@ -182,7 +183,7 @@ end
 if not isfile(library.directory .. "/fonts/main.ttf") then
 	writefile(
 		library.directory .. "/fonts/main.ttf",
-		game:HttpGet("https://github.com/harperflow/SulfatePublic/raw/refs/heads/main/assets/fs-tahoma-8px.ttf")
+		game:HttpGet("https://github.com/i77lhm/storage/raw/refs/heads/main/fonts/fs-tahoma-8px.ttf")
 	)
 end
 
@@ -1713,8 +1714,16 @@ function library:window(properties)
 				end
 			end
 
+			if bool then
+				library.gui.Enabled = true
+			end
+
 			task.delay(0.5, function()
 				cfg.is_closing_menu = false
+
+				if bool == false then
+					library.gui.Enabled = false
+				end
 			end)
 		end
 	end
@@ -1761,6 +1770,7 @@ function library:tab(properties)
 		Size = dim2(1, -2, 1, -2),
 		BorderSizePixel = 0,
 		BackgroundColor3 = rgb(255, 255, 255),
+		Active = false,
 	})
 
 	local gradient = library:create("UIGradient", {
