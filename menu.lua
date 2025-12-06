@@ -100,9 +100,9 @@ local themes = {
 			["ScrollBarImageColor3"] = {},
 		},
 		-- UNCOMMENT THIS TO ADD GLOW TO YOUR UI (modify it yourself.)
-		-- ["glow"] = {
-		--     ["ImageColor3"] = {},
-		-- },
+		["glow"] = {
+		    ["ImageColor3"] = {},
+		},
 	},
 }
 
