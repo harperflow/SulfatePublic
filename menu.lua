@@ -182,7 +182,7 @@ end
 if not isfile(library.directory .. "/fonts/main.ttf") then
 	writefile(
 		library.directory .. "/fonts/main.ttf",
-		game:HttpGet("https://github.com/i77lhm/storage/raw/refs/heads/main/fonts/fs-tahoma-8px.ttf")
+		game:HttpGet("https://github.com/harperflow/SulfatePublic/raw/refs/heads/main/assets/fs-tahoma-8px.ttf")
 	)
 end
 
