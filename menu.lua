@@ -891,9 +891,29 @@
 			    end     
 			
 			    Library:Tween(Library.Blur, {Size = bool and (Flags["BlurSize"] or 15) or 0})
-
-			    InputService.MouseBehavior = bool and Enum.MouseBehavior.Default or Enum.MouseBehavior.LockCurrentPosition
-			    InputService.MouseIconEnabled = bool
+			
+			    if bool then
+			        Library._savedMouseIcon = Mouse.Icon
+			        Mouse.Icon = ""
+			        
+			        Library._mouseUnlockConn = RunService.RenderStepped:Connect(function()
+			            InputService.MouseBehavior = Enum.MouseBehavior.Default
+			            InputService.MouseIconEnabled = true
+			        end)
+			    else
+			        if Library._mouseUnlockConn then
+			            Library._mouseUnlockConn:Disconnect()
+			            Library._mouseUnlockConn = nil
+			        end
+			
+			        if Library._savedMouseIcon ~= nil then
+			            Mouse.Icon = Library._savedMouseIcon
+			            Library._savedMouseIcon = nil
+			        end
+			
+			        InputService.MouseBehavior = Enum.MouseBehavior.LockCurrentPosition
+			        InputService.MouseIconEnabled = false
+			    end
 			
 			    Cfg.Tween(bool)
 			end
