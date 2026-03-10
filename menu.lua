@@ -885,16 +885,18 @@
                 --
             end
             
-            function Cfg.SetVisible(bool)
-                if Cfg.Tweening == true then
-                    return 
-                end 
+			function Cfg.SetVisible(bool)
+			    if Library.Tweening then
+			        return 
+			    end     
+			
+			    Library:Tween(Library.Blur, {Size = bool and (Flags["BlurSize"] or 15) or 0})
 
-                Items.Colorpicker.Position = dim2(0, Items.ColorpickerObject.AbsolutePosition.X + 2, 0, Items.ColorpickerObject.AbsolutePosition.Y + 74)
-                
-                Cfg.Tween(bool)
-                Cfg.Set(hsv(h, s, v), a)
-            end
+			    InputService.MouseBehavior = bool and Enum.MouseBehavior.Default or Enum.MouseBehavior.LockCurrentPosition
+			    InputService.MouseIconEnabled = bool
+			
+			    Cfg.Tween(bool)
+			end
 
             function Cfg.Tween(bool) 
                 if Cfg.Tweening == true then 
